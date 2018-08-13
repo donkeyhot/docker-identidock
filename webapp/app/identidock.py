@@ -43,5 +43,6 @@ def get_identicon(name):
 		print ("From the cache {0}".format(name), flush=True)
 	return Response(image, mimetype='image/png')
 
+
 if __name__ == '__main__':
 	app.run(debug=True, host='0.0.0.0')
