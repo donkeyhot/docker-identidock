@@ -1,18 +1,16 @@
 webapp:
 #  build: ./webapp/
-  image:   lapsatech/identidock-webapp
+  image: lapsatech/identidock-webapp
   ports:
-    - "80:5000"
+  - 80:5000
   environment:
     ENV: DEV
   volumes:
-    - ./webapp/app:/app
+  - ./webapp/app:/app
   links:
-    - dnmonster
-    - redis
-
+  - dnmonster
+  - redis
 dnmonster:
   image: amouat/dnmonster
-
 redis:
   image: redis
