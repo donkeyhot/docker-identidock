@@ -6,7 +6,7 @@ WORKDIR /app
 COPY app /app
 COPY cmd.sh /
 
-EXPOSE 9090 9091
+EXPOSE 5000 9090 9091
 
 RUN groupadd -r uwsgi && useradd -r -g uwsgi uwsgi
 USER uwsgi
