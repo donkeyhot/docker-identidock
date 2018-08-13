@@ -1,11 +1,11 @@
 webapp:
-  build: .
+  build: ./webapp/
   ports:
     - "80:5000"
   environment:
     ENV: DEV
   volumes:
-    - ./app:/app
+    - ./webapp/app:/app
   links:
     - dnmonster
     - redis
