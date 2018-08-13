@@ -1,6 +1,6 @@
 webapp:
 #  build: ./webapp/
-  image: lapsatech/identidock-webapp
+  image: lapsatech/identidock-webapp:version-0.1
   ports:
   - 80:5000
   environment:
