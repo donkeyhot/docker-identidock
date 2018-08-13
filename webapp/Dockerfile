@@ -1,6 +1,6 @@
-FROM python:3.4
+FROM python
 
-RUN pip install Flask==0.10.1 uWSGI==2.0.17 requests==2.5.1 redis==2.10.3
+RUN pip install Flask uWSGI requests redis
 
 WORKDIR /app
 COPY app /app
