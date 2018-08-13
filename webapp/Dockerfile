@@ -12,4 +12,3 @@ RUN groupadd -r uwsgi && useradd -r -g uwsgi uwsgi
 USER uwsgi
 
 CMD ["/cmd.sh"]
-
