@@ -1,5 +1,3 @@
-#Default compose args
-
 #DOCKER_CMD="docker"
 DOCKER_CMD="sudo docker"
 
@@ -25,7 +23,15 @@ if [ $ERR -eq 0 ]; then
 	IP=$($DOCKER_CMD inspect -f {{.NetworkSettings.IPAddress}} jenkins_webapp_1)
 #	IP="localhost"
 	CODE=$(curl -sL -w "%{http_code}" $IP:5000/monster/bla -o /dev/null) || true
-	if [ $CODE -ne 200 ]; then
+	if [ $CODE -eq 200 ]; then
+		HASH=$(git rev-parse --short HEAD)
+		$DOCKER_CMD tag jenkins_webapp lapsatech/identidock-webapp:$HASH
+		$DOCKER_CMD tag jenkins_webapp lapsatech/identidock-webapp:newest
+		echo "Pushing"
+		$DOCKER_CMD login -u lapsatech -p oreiily2018
+		$DOCKER_CMD push lapsatech/identidock-webapp:$HASH
+		$DOCKER_CMD push lapsatech/identidock-webapp:newest
+	else
         echo "Site returned " $CODE
 		ERR=1
 	fi
